@@ -1,0 +1,17 @@
+{
+    "name": "collin/plugin-template",
+    "description": "This is a simple wordpress plugin template",
+    "type": "project",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "collin",
+            "email": "collin.turn@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {"Inc\\": "./inc"}
+    }
+}
