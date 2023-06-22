@@ -7,26 +7,34 @@
 namespace Include\Pages;
 
 use \Include\Base\BaseController;
+use \Include\API\SettingsAPI;
 
 // class for the plugin's admin page
 class Admin extends BaseController {
 
-    function register() {
-        add_action('admin_menu', array($this, 'add_admin_pages'));
-    }
+    public $settings;
 
-    function add_admin_pages() {
-        add_menu_page(
-            'Modular Administrative Area Settings', 
-            'ModAdminArea', 
-            'manage_options', 
-            'mod-admin-area', 
-            array($this, 'admin_index')
-        );
-    }
+    public $pages = [];
 
-    function admin_index() {
-        require_once $this->pluginPath.'templates/admin.php';
+    function __construct() {
+        $this->settings = new SettingsAPI();
+
+        $this->pages = [
+            [
+                'page_title' => 'Modular Administrative Area Settings', 
+                'menu_title' => 'ModAdminArea', 
+                'capability' => 'manage_options', 
+                'menu_slug' => 'mod-admin-area', 
+                'callback' => function() { 
+                    echo '<h1>Modular Administrative Area Settings</h1>'; 
+                },
+                'icon_url' => 'dashicons-store',
+                'position' => 110
+            ]
+        ];
     }
     
+    public function register() {
+        $this->settings->addPages($this->pages)->register();
+    }
 }
