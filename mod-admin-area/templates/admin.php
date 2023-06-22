@@ -1,0 +1,1 @@
+<h1>Collin's Modular Admin Area Plugin</h1>
