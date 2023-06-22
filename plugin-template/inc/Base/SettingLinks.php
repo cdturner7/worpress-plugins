@@ -17,7 +17,7 @@ class SettingLinks extends BaseController {
 
     function add_settings_link($links) {
         // add custom settings link
-        $settings_link = '<a href="admin.php?page=plugin_template">Settings</a>';
+        $settings_link = '<a href="admin.php?page=plugin-template">Settings</a>';
         array_push($links, $settings_link);
         return $links;
     }

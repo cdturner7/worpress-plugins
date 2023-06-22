@@ -16,8 +16,13 @@ class Admin extends BaseController {
     }
 
     function add_admin_pages() {
-        add_menu_page("Collin's Plugin Template", 'PluginTemplate', 'manage_options', 'plugin_template',
-            array($this, 'admin_index'), '', 110);
+        add_menu_page(
+            'Plugin Template Settings', 
+            'PluginTemplate', 
+            'manage_options', 
+            'plugin-template',
+            array($this, 'admin_index')
+        );
     }
 
     function admin_index() {

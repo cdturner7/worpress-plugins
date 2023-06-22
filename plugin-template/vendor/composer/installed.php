@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'collin/plugin-template',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => '4ed50f2b23d4e1c15a8181ece248b962c3cbfafd',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'collin/plugin-template' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '4ed50f2b23d4e1c15a8181ece248b962c3cbfafd',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
