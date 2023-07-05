@@ -6,34 +6,48 @@
 // set the namespace
 namespace Include\Pages;
 
-use \Include\Base\BaseController;
 use \Include\API\SettingsAPI;
+use \Include\Base\BaseController;
+use \Include\API\Callbacks\AdminCallbacks;
 
 // class for the plugin's admin page
 class Admin extends BaseController {
 
     public $settings;
+    public $callbacks;
 
     public $pages = [];
     public $subpages = [];
+    
+    public function register() {
 
-    function __construct() {
         $this->settings = new SettingsAPI();
 
+        $this->callbacks = new AdminCallbacks();
+
+        $this->setPages();
+
+        $this->setSubpages();
+
+        $this->settings->addPages($this->pages)->withSubpage('Dashboard')->
+            addSubpages($this->subpages)->register();
+    }
+
+    public function setPages() {
         $this->pages =  [
             [
                 'page_title' => 'Modular Administrative Area Settings', 
                 'menu_title' => 'ModAdminArea', 
                 'capability' => 'manage_options', 
                 'menu_slug'  => 'mod-admin-area', 
-                'callback'   => function() { 
-                    echo '<h1>Modular Administrative Area Settings</h1>'; 
-                },
+                'callback'   => array($this->callbacks, 'adminDashboard'),
                 'icon_url'   => 'dashicons-store',
                 'position'   => 110
             ]
         ];
+    }
 
+    public function setSubpages() {
         $this->subpages =  [
             [
                 'parent_slug' => 'mod-admin-area',
@@ -41,7 +55,7 @@ class Admin extends BaseController {
                 'menu_title'  => 'Test1', 
                 'capability'  => 'manage_options', 
                 'menu_slug'   => 'mod-admin-test1', 
-                'callback'    => function() { echo '<h1>CPT Test1</h1>'; }
+                'callback'    => array($this->callbacks, 'testOne')
             ],
             [
                 'parent_slug' => 'mod-admin-area',
@@ -49,7 +63,7 @@ class Admin extends BaseController {
                 'menu_title'  => 'Test2', 
                 'capability'  => 'manage_options', 
                 'menu_slug'   => 'mod-admin-test2', 
-                'callback'    => function() { echo '<h1>CPT Test2</h1>'; }
+                'callback'    => array($this->callbacks, 'testTwo')
             ],
             [
                 'parent_slug' => 'mod-admin-area',
@@ -57,13 +71,8 @@ class Admin extends BaseController {
                 'menu_title'  => 'Test3', 
                 'capability'  => 'manage_options', 
                 'menu_slug'   => 'mod-admin-test3', 
-                'callback'    => function() { echo '<h1>CPT Test3</h1>'; }
+                'callback'    => array($this->callbacks, 'testThree')
             ]
         ];
-    }
-    
-    public function register() {
-        $this->settings->addPages($this->pages)->withSubpage('Dashboard')->
-            addSubpages($this->subpages)->register();
     }
 }

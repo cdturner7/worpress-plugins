@@ -1,0 +1,1 @@
+<h1>Modular Admin Area Plugin Test Two</h1>

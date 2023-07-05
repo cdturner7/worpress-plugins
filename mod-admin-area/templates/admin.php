@@ -1,1 +1,1 @@
-<h1>Collin's Modular Admin Area Plugin</h1>
+<h1>Modular Admin Area Plugin Dashboard</h1>
