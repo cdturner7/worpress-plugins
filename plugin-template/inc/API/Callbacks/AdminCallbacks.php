@@ -4,9 +4,9 @@
 */
 
 // set the namespace
-namespace Include\API\Callbacks;
+namespace Inc\API\Callbacks;
 
-use Include\Base\BaseController;
+use Inc\Base\BaseController;
 
 class AdminCallbacks extends BaseController {
 

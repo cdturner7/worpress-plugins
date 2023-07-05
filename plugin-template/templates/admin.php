@@ -1,1 +1,1 @@
-<h1>Collin's Plugin Template</h1>
+<h1>Modular Admin Area Plugin Dashboard</h1>
