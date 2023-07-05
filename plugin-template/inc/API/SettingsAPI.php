@@ -4,7 +4,7 @@
 */
 
 // set the namespace
-namespace Include\API;
+namespace Inc\API;
 
 // class for configuring the API settings
 class SettingsAPI {

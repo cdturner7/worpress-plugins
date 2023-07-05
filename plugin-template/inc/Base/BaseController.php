@@ -1,6 +1,6 @@
 <?php
 /**
-* @package PluginTemplate
+* @package ModularAdministrativeArea
 */
 
 // set the namespace
@@ -17,6 +17,6 @@ class BaseController {
         $this->pluginURL  = plugin_dir_url(dirname(__FILE__, 2));
         $this->pluginPath = plugin_dir_path(dirname(__FILE__, 2));
         $plugin = plugin_basename(dirname( __FILE__, 3));
-        $this->pluginName = $plugin . "/" . $plugin . ".php";
+        $this->pluginName = $plugin.'/'.$plugin.'.php';
     }
 }

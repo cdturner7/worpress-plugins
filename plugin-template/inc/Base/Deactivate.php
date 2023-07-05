@@ -1,6 +1,6 @@
 <?php
 /**
-* @package PluginTemplate
+* @package ModularAdministrativeArea
 */
 
 // set the namespace
