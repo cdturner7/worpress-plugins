@@ -29,6 +29,12 @@ class Admin extends BaseController {
 
         $this->setSubpages();
 
+        $this->setSettings();
+
+        $this->setSections();
+
+        $this->setFields();
+
         $this->settings->addPages($this->pages)->withSubpage('Dashboard')->
             addSubpages($this->subpages)->register();
     }
@@ -36,10 +42,10 @@ class Admin extends BaseController {
     public function setPages() {
         $this->pages =  [
             [
-                'page_title' => 'Modular Administrative Area Settings', 
-                'menu_title' => 'ModAdminArea', 
+                'page_title' => 'Plugin Template', 
+                'menu_title' => 'Plugin Template', 
                 'capability' => 'manage_options', 
-                'menu_slug'  => 'mod-admin-area', 
+                'menu_slug'  => 'plugin-template', 
                 'callback'   => array($this->callbacks, 'adminDashboard'),
                 'icon_url'   => 'dashicons-store',
                 'position'   => 110
@@ -50,29 +56,73 @@ class Admin extends BaseController {
     public function setSubpages() {
         $this->subpages =  [
             [
-                'parent_slug' => 'mod-admin-area',
-                'page_title'  => 'Modular Admin Area Test1', 
-                'menu_title'  => 'Test1', 
+                'parent_slug' => 'plugin-template',
+                'page_title'  => 'Plugin Template Test 1', 
+                'menu_title'  => 'Test 1', 
                 'capability'  => 'manage_options', 
-                'menu_slug'   => 'mod-admin-test1', 
+                'menu_slug'   => 'plugin-template-test1', 
                 'callback'    => array($this->callbacks, 'testOne')
             ],
             [
-                'parent_slug' => 'mod-admin-area',
-                'page_title'  => 'Modular Admin Area Test2', 
-                'menu_title'  => 'Test2', 
+                'parent_slug' => 'plugin-template',
+                'page_title'  => 'Plugin Template Test 2', 
+                'menu_title'  => 'Test 2', 
                 'capability'  => 'manage_options', 
-                'menu_slug'   => 'mod-admin-test2', 
+                'menu_slug'   => 'plugin-template-test2', 
                 'callback'    => array($this->callbacks, 'testTwo')
             ],
             [
-                'parent_slug' => 'mod-admin-area',
-                'page_title'  => 'Modular Admin Area Test3', 
+                'parent_slug' => 'plugin-template',
+                'page_title'  => 'Plugin Template Test3', 
                 'menu_title'  => 'Test3', 
                 'capability'  => 'manage_options', 
-                'menu_slug'   => 'mod-admin-test3', 
+                'menu_slug'   => 'plugin-template-test3', 
                 'callback'    => array($this->callbacks, 'testThree')
             ]
         ];
     }
+
+    public function setSettings() {
+        $args = [
+            [
+                'option_group' => 'template_options_group',
+                'option_name'  => 'text_example',
+                'callback'     => array($this->callbacks, 'templateOptionsGroup')
+            ]
+        ];
+
+        $this->settings->setSettings($args);
+    }
+
+    public function setSections() {
+        $args = [
+            [
+                'id'       => 'template_admin_index',
+                'title'    => 'Settings',
+                'callback' => array($this->callbacks, 'templateAdminSection'),
+                'page'     => 'plugin-template'
+            ]
+        ];
+
+        $this->settings->setSections($args);
+    }
+
+    public function setFields() {
+        $args = [
+            [
+                'id'       => 'text_example',
+                'title'    => 'Text Example',
+                'callback' => array($this->callbacks, 'templateTextExample'),
+                'page'     => 'plugin-template',
+                'section'  => 'template_admin_index',
+                'args'     => array(
+                    'label_for' => 'text_example',
+                    'class'     => 'example-class'
+                )
+            ]
+        ];
+
+        $this->settings->setFields($args);
+    }
+
 }
