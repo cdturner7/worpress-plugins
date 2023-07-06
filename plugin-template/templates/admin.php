@@ -1,13 +1,33 @@
 <div class="wrap">
-    <h1>Modular Admin Area Plugin Dashboard</h1>
+    <h1>Template Plugin Dashboard</h1>
+
+
     <?php settings_errors(); ?>
 
-    <form action="options.php" class="post">
-        <?php
-            settings_fields('template_options_group');
-            do_settings_sections('plugin-template');
-            submit_button();
-        ?>
-    </form>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab-1">Manage Settings</a></li>
+        <li><a href="#tab-2">Updates</a></li>
+        <li><a href="#tab-3">About</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="tab-1" class="tab-pane active">
+            <form action="options.php" class="post">
+                <?php
+                    settings_fields('template_options_group');
+                    do_settings_sections('plugin-template');
+                    submit_button();
+                ?>
+            </form>
+        </div>
+        <div id="tab-2" class="tab-pane">
+            <h1>This is the About Updates</h1>
+        </div>
+        <div id="tab-3" class="tab-pane">
+            <h1>This is the About Tab</h1>
+        </div>
+    </div>
+
+    
 </div>
 
