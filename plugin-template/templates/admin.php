@@ -1,7 +1,6 @@
 <div class="wrap">
     <h1>Template Plugin Dashboard</h1>
 
-
     <?php settings_errors(); ?>
 
     <ul class="nav nav-tabs">
@@ -12,7 +11,7 @@
 
     <div class="tab-content">
         <div id="tab-1" class="tab-pane active">
-            <form action="options.php" class="post">
+            <form method="post" action="options.php">
                 <?php
                     settings_fields('template_options_group');
                     do_settings_sections('plugin-template');
